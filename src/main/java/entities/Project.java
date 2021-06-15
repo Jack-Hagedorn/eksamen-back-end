@@ -22,7 +22,7 @@ public class Project implements Serializable {
     private String name;
     private String description;
 
-    @ManyToMany(mappedBy = "projects")
+    @ManyToMany()
     private List<Developer> developers;
 
     @ManyToMany(mappedBy = "billedBy")

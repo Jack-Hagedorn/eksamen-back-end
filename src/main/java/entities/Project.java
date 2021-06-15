@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -20,6 +21,12 @@ public class Project implements Serializable {
 
     private String name;
     private String description;
+
+    @ManyToMany(mappedBy = "projects")
+    private List<Developer> developers;
+
+    @ManyToMany(mappedBy = "billedBy")
+    private List<ProjectHours> projectHours;
 
     public Project(String name, String description) {
         this.name = name;

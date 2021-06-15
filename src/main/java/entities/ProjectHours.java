@@ -3,11 +3,9 @@ package entities;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -23,6 +21,12 @@ public class ProjectHours implements Serializable {
     private int hoursSpent;
     private int userStory;
     private String description;
+
+    @ManyToMany(mappedBy = "records")
+    private List<Developer> developerList;
+
+    @ManyToMany(mappedBy = "billedBy")
+    private List<Project> projectList;
 
     public ProjectHours(int hoursSpent, int userStory, String description) {
         this.hoursSpent = hoursSpent;
